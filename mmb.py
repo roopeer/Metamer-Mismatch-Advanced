@@ -21,6 +21,6 @@ def compute_mmb(ocs_Phi, obs_resp_Phi, obs_resp_Psi, illum_Phi=None, illum_Psi=N
     points = []
     for _ in range(res):
         k = sample_unit_sphere()
-        x = optimize.linprog(c=S.T @ k, A_eq=S_Phi, b_eq=ocs_Phi, bounds=(0, 1)).x
+        x = optimize.linprog(c=-S.T @ k, A_eq=S_Phi, b_eq=ocs_Phi, bounds=(0, 1)).x
         points.append((S @ x).tolist())
     return points
